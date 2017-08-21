@@ -86,6 +86,7 @@ package librarymanagement {
 
 package internal {
   package librarymanagement {
+    object `package`
   }
 
   object `package` {
