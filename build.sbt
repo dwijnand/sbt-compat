@@ -1,7 +1,7 @@
 val sbtcompat = project in file(".")
 
 organization in ThisBuild := "com.dwijnand"
-        name in ThisBuild := "sbt-compat"
+        name              := "sbt-compat"
     licenses in ThisBuild := Seq(("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0")))
  description in ThisBuild := "A compatibility library; backports parts of sbt 1's public API in sbt 0.13"
   developers in ThisBuild := List(Developer("dwijnand", "Dale Wijnand", "dale wijnand gmail com", url("https://dwijnand.com")))
