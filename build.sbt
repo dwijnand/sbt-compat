@@ -27,11 +27,26 @@ scalacOptions in ThisBuild  += "-Ywarn-dead-code"
 scalacOptions in ThisBuild  += "-Ywarn-numeric-widen"
 scalacOptions in ThisBuild  += "-Ywarn-value-discard"
 
-def toSbtPlugin(m: ModuleID) = Def.setting(
-  Defaults.sbtPluginExtra(m, (sbtBinaryVersion in update).value, (scalaBinaryVersion in update).value)
-)
+
 import com.typesafe.tools.mima.core._, ProblemFilters._
-mimaPreviousArtifacts := Set.empty // Set(organization.value %% moduleName.value % "1.0.0")
+// Add Bintray Ivy repo to fetch the previous MiMa artifact
+resolvers += {
+  val owner = bintrayOrganization.value getOrElse "dwijnand"
+  val repo = bintrayRepository.value
+  // Resolver.bintrayIvyRepo's name clashes with the added Resolver.bintrayRepo
+  Resolver.url(s"bintray-ivy-$owner-$repo", url(s"https://dl.bintray.com/$owner/$repo/"))(
+    Resolver.ivyStylePatterns
+  )
+}
+mimaPreviousArtifacts := Set {
+  val m = organization.value %% moduleName.value % "1.0.0-M1"
+  val sbtBinV = (sbtBinaryVersion in pluginCrossBuild).value
+  val scalaBinV = (scalaBinaryVersion in update).value
+  if (sbtPlugin.value)
+    Defaults.sbtPluginExtra(m cross CrossVersion.Disabled, sbtBinV, scalaBinV)
+  else
+    m
+}
 mimaBinaryIssueFilters ++= Seq()
 
 cancelable in Global := true
