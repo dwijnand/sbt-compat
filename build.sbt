@@ -30,7 +30,7 @@ scalacOptions in ThisBuild  += "-Ywarn-value-discard"
 
 import com.typesafe.tools.mima.core._, ProblemFilters._
 mimaPreviousArtifacts := Set {
-  val m = organization.value %% moduleName.value % "1.0.0-M1"
+  val m = organization.value %% moduleName.value % "1.0.0"
   val sbtBinV = (sbtBinaryVersion in pluginCrossBuild).value
   val scalaBinV = (scalaBinaryVersion in update).value
   if (sbtPlugin.value)
