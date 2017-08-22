@@ -29,15 +29,6 @@ scalacOptions in ThisBuild  += "-Ywarn-value-discard"
 
 
 import com.typesafe.tools.mima.core._, ProblemFilters._
-// Add Bintray Ivy repo to fetch the previous MiMa artifact
-resolvers += {
-  val owner = bintrayOrganization.value getOrElse "dwijnand"
-  val repo = bintrayRepository.value
-  // Resolver.bintrayIvyRepo's name clashes with the added Resolver.bintrayRepo
-  Resolver.url(s"bintray-ivy-$owner-$repo", url(s"https://dl.bintray.com/$owner/$repo/"))(
-    Resolver.ivyStylePatterns
-  )
-}
 mimaPreviousArtifacts := Set {
   val m = organization.value %% moduleName.value % "1.0.0-M1"
   val sbtBinV = (sbtBinaryVersion in pluginCrossBuild).value
