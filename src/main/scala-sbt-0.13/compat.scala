@@ -89,6 +89,13 @@ package internal {
     object `package`
   }
 
+  package util {
+    object JLine {
+      def usingTerminal[T](f: jline.Terminal => T): T =
+        sbt.JLine.usingTerminal(f)
+    }
+  }
+
   object `package` {
     type BuildStructure = sbt.BuildStructure
     type LoadedBuildUnit = sbt.LoadedBuildUnit
