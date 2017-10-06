@@ -90,10 +90,9 @@ package internal {
   }
 
   package util {
-    object `package` {
-      object JLine {
-        val usingTerminal = sbt.JLine.usingTerminal _
-      }
+    object JLine {
+      def usingTerminal[T](f: jline.Terminal => T): T =
+        sbt.JLine.usingTerminal(f)
     }
   }
 
