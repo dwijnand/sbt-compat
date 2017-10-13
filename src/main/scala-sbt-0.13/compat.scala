@@ -10,6 +10,15 @@ object compat {
   implicit class ModuleIdOps(val _m: ModuleID) extends AnyVal {
     def withName(n: String): ModuleID = _m copy (name = n)
   }
+
+  implicit class RichProcessBuilder(pb: ProcessBuilder) {
+    def lineStream_!(logger: ProcessLogger) = pb.lines_!(logger)
+    def lineStream_! : Stream[String]       = pb.lines_!
+  }
+
+  implicit def promoteProcessLogger(logger: sbt.Logger): ProcessLogger =
+    ProcessLogger(msg => logger.info(msg), msg => logger.error(msg))
+
 }
 
 package io {
