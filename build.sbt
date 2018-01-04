@@ -27,8 +27,6 @@ scalacOptions in ThisBuild  += "-Ywarn-dead-code"
 scalacOptions in ThisBuild  += "-Ywarn-numeric-widen"
 scalacOptions in ThisBuild  += "-Ywarn-value-discard"
 
-
-import com.typesafe.tools.mima.core._, ProblemFilters._
 mimaPreviousArtifacts := Set {
   val m = organization.value %% moduleName.value % "1.0.0"
   val sbtBinV = (sbtBinaryVersion in pluginCrossBuild).value
@@ -38,6 +36,8 @@ mimaPreviousArtifacts := Set {
   else
     m
 }
+
+import com.typesafe.tools.mima.core._, ProblemFilters._
 mimaBinaryIssueFilters ++= Seq()
 
 cancelable in Global := true
