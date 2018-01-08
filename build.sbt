@@ -34,7 +34,7 @@ mimaPreviousArtifacts := Set {
   val sbtBinV = (sbtBinaryVersion in pluginCrossBuild).value
   val scalaBinV = (scalaBinaryVersion in update).value
   if (sbtPlugin.value)
-    Defaults.sbtPluginExtra(m cross CrossVersion.Disabled, sbtBinV, scalaBinV)
+    Defaults.sbtPluginExtra(m cross CrossVersion.Disabled(), sbtBinV, scalaBinV)
   else
     m
 }
