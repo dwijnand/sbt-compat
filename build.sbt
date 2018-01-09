@@ -21,6 +21,7 @@ scalaVersion in ThisBuild := (CrossVersion partialVersion (sbtVersion in pluginC
 
 scalacOptions in ThisBuild ++= Seq("-encoding", "utf8")
 scalacOptions in ThisBuild ++= Seq("-deprecation", "-feature", "-unchecked", "-Xlint")
+scalacOptions in ThisBuild  += "-language:_,-reflectiveCalls"
 scalacOptions in ThisBuild  += "-Xfuture"
 scalacOptions in ThisBuild  += "-Yno-adapted-args"
 scalacOptions in ThisBuild  += "-Ywarn-dead-code"
