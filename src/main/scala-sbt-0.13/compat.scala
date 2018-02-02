@@ -232,3 +232,10 @@ package internal {
     type LoadedBuildUnit = sbt.LoadedBuildUnit
   }
 }
+
+package util {
+  object `package` {
+    type Logger = sbt.Logger
+  }
+}
+
