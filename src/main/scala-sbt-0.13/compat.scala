@@ -27,6 +27,9 @@ package librarymanagement {
     type UpdateConfiguration = sbt.UpdateConfiguration
     type ScalaModuleInfo = IvyScala
 
+    type CrossVersion = sbt.CrossVersion
+    val CrossVersion = sbt.CrossVersion
+
     implicit class UpdateConfigurationOps(val _uc: UpdateConfiguration) extends AnyVal {
       def withLogging(ul: UpdateLogging): UpdateConfiguration = _uc copy (logging = ul)
     }
@@ -41,6 +44,8 @@ package librarymanagement {
     type MavenRepository = sbt.MavenRepository
     type Resolver = sbt.Resolver
 
+    type ModuleID = sbt.ModuleID
+    val ModuleID = sbt.ModuleID
     implicit class ModuleIDOps(val _m: ModuleID) extends AnyVal {
       def withConfigurations(configurations: Option[String]): ModuleID =
         _m.copy(configurations = configurations)
@@ -55,6 +60,7 @@ package librarymanagement {
     }
 
     type Artifact = sbt.Artifact
+    val Artifact = sbt.Artifact
     implicit class ArtifactOps(val _a: Artifact) extends AnyVal {
       def withType(`type`: String): Artifact = _a.copy(`type` = `type`)
       def withExtension(extension: String): Artifact = _a.copy(extension = extension)
@@ -64,7 +70,7 @@ package librarymanagement {
         _a.copy(extraAttributes = extraAttributes)
     }
 
-    type ModuleID = sbt.ModuleID
+    type ModuleReport = sbt.ModuleReport
     implicit class ModuleReportOps(val _mr: ModuleReport) extends AnyVal {
       def withPublicationDate(publicationDate: Option[java.util.Calendar]): ModuleReport =
         _mr.copy(publicationDate = publicationDate.map(_.getTime))
@@ -132,6 +138,7 @@ package librarymanagement {
     }
 
     type UpdateReport = sbt.UpdateReport
+    val UpdateReport = sbt.UpdateReport
     implicit class UpdateReportCompanionOps(val companion: UpdateReport.type) extends AnyVal {
       def apply(
           cachedDescriptor: File,
@@ -142,6 +149,8 @@ package librarymanagement {
         new UpdateReport(cachedDescriptor, configurations, stats, stamps)
     }
 
+    type UpdateStats = sbt.UpdateStats
+    val UpdateStats = sbt.UpdateStats
     implicit class UpdateStatsCompanionOps(val companion: UpdateStats.type) extends AnyVal {
       def apply(
           resolveTime: Long,
