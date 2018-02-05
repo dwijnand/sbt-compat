@@ -27,6 +27,9 @@ package librarymanagement {
     type UpdateConfiguration = sbt.UpdateConfiguration
     type ScalaModuleInfo = IvyScala
 
+    type CrossVersion = sbt.CrossVersion
+    val CrossVersion = sbt.CrossVersion
+
     implicit class UpdateConfigurationOps(val _uc: UpdateConfiguration) extends AnyVal {
       def withLogging(ul: UpdateLogging): UpdateConfiguration = _uc copy (logging = ul)
     }
