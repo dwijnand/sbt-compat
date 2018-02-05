@@ -54,6 +54,7 @@ package librarymanagement {
       def withIsTransitive(isTransitive: Boolean): ModuleID = _m.copy(isTransitive = isTransitive)
     }
 
+    type Artifact = sbt.Artifact
     implicit class ArtifactOps(val _a: Artifact) extends AnyVal {
       def withType(`type`: String): Artifact = _a.copy(`type` = `type`)
       def withExtension(extension: String): Artifact = _a.copy(extension = extension)
@@ -63,6 +64,7 @@ package librarymanagement {
         _a.copy(extraAttributes = extraAttributes)
     }
 
+    type ModuleID = sbt.ModuleID
     implicit class ModuleReportOps(val _mr: ModuleReport) extends AnyVal {
       def withPublicationDate(publicationDate: Option[java.util.Calendar]): ModuleReport =
         _mr.copy(publicationDate = publicationDate.map(_.getTime))
@@ -129,6 +131,7 @@ package librarymanagement {
         new ConfigurationReport(configuration.name, modules, details, Nil)
     }
 
+    type UpdateReport = sbt.UpdateReport
     implicit class UpdateReportCompanionOps(val companion: UpdateReport.type) extends AnyVal {
       def apply(
           cachedDescriptor: File,
