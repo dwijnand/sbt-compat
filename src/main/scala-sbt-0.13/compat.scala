@@ -42,7 +42,11 @@ package librarymanagement {
     type GetClassifiersModule = sbt.GetClassifiersModule
 
     type MavenRepository = sbt.MavenRepository
+    type FileRepository = sbt.FileRepository
+    type URLRepository = sbt.URLRepository
+    type RawRepository = sbt.RawRepository
     type Resolver = sbt.Resolver
+    type Patterns = sbt.Patterns
 
     type ModuleID = sbt.ModuleID
     val ModuleID = sbt.ModuleID
