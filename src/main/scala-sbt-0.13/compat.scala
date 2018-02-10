@@ -75,6 +75,7 @@ package librarymanagement {
     }
 
     type ModuleReport = sbt.ModuleReport
+    val ModuleReport = sbt.ModuleReport
     implicit class ModuleReportOps(val _mr: ModuleReport) extends AnyVal {
       def withPublicationDate(publicationDate: Option[java.util.Calendar]): ModuleReport =
         _mr.copy(publicationDate = publicationDate.map(_.getTime))
@@ -110,6 +111,8 @@ package librarymanagement {
         Configuration(name, description, isPublic, extendsConfigs.toList, transitive)
     }
 
+    type Caller = sbt.Caller
+    val Caller = sbt.Caller
     implicit class CallerCompanionOps(val companion: Caller.type) extends AnyVal {
       def apply(
           caller: ModuleID,
@@ -131,6 +134,8 @@ package librarymanagement {
         )
     }
 
+    type ConfigurationReport = sbt.ConfigurationReport
+    val ConfigurationReport = sbt.ConfigurationReport
     implicit class ConfigurationReportCompanionOps(val companion: ConfigurationReport.type)
         extends AnyVal {
       def apply(
