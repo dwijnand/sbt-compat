@@ -4,12 +4,21 @@ package sbt
 // Exposes (a minimal part) of the sbt 1 API using sbt 0.13 API
 // Inspired by macro-compat
 
+import scala.language.implicitConversions
+
 object compat {
   val scalaModuleInfo = SettingKey[Option[librarymanagement.ScalaModuleInfo]]("ivyScala")
 
   implicit class ModuleIdOps(val _m: ModuleID) extends AnyVal {
     def withName(n: String): ModuleID = _m copy (name = n)
   }
+
+  implicit class RichProcessBuilder(pb: ProcessBuilder) {
+    def lineStream_!(logger: ProcessLogger) = pb.lines_!(logger)
+    def lineStream_! : Stream[String]       = pb.lines_!
+  }
+
+  implicit def absLog2PLog(log: AbstractLogger): ProcessLogger = sbt.Logger.absLog2PLog(log)
 }
 
 package io {
