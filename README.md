@@ -15,15 +15,6 @@ versions of Scala.
 
 Add this plugin to your sbt plugin (in `build.sbt`, **NOT** `project/plugins.sbt`):
 
-    libraryDependencies += Defaults.sbtPluginExtra(
-      "com.dwijnand" % "sbt-compat" % "1.0.0",
-      (sbtBinaryVersion in pluginCrossBuild).value,
-      (scalaBinaryVersion in update).value
-    )
-
-Once sbt 0.13.17 is released with the fix to [sbt/sbt#3393](https://github.com/sbt/sbt/issues/3393) this will
-simplify to:
-
     addSbtPlugin("com.dwijnand" % "sbt-compat" % "1.0.0")
 
 ## Usage
