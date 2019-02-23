@@ -14,8 +14,8 @@ organization in ThisBuild := "com.dwijnand"
 crossSbtVersions           := List("0.13.8", "1.0.0") // 0.13.8 has UpdateLogging.Default
 
 scalaVersion in ThisBuild := (CrossVersion partialVersion (sbtVersion in pluginCrossBuild).value match {
-  case Some((0, 13)) => "2.10.6"
-  case Some((1, _))  => "2.12.3"
+  case Some((0, 13)) => "2.10.7"
+  case Some((1, _))  => "2.12.8"
   case _             => sys error s"Unhandled sbt version ${(sbtVersion in pluginCrossBuild).value}"
 })
 
