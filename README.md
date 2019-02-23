@@ -1,8 +1,10 @@
-# [sbt-compat][] [![travis-badge][]][travis]
+# [sbt-compat][] [![travis-badge][]][travis] [![release-badge][]][release]
 
-[sbt-compat]:         https://github.com/dwijnand/sbt-compat
-[travis]:          https://travis-ci.org/dwijnand/sbt-compat
-[travis-badge]:    https://travis-ci.org/dwijnand/sbt-compat.svg?branch=master
+[sbt-compat]:                       https://github.com/dwijnand/sbt-compat
+[travis]:                        https://travis-ci.org/dwijnand/sbt-compat
+[travis-badge]:                  https://travis-ci.org/dwijnand/sbt-compat.svg?branch=master
+[release]:                          https://github.com/dwijnand/sbt-compat/releases/latest
+[release-badge]: https://img.shields.io/github/release/dwijnand/sbt-compat.svg
 
 `sbt-compat` is an [sbt](http://www.scala-sbt.org/) plugin that backports parts of sbt 1's public API on top of
 sbt 0.13 implementation.
@@ -15,7 +17,9 @@ versions of Scala.
 
 Add this plugin to your sbt plugin (in `build.sbt`, **NOT** `project/plugins.sbt`):
 
-    addSbtPlugin("com.dwijnand" % "sbt-compat" % "1.0.0")
+    addSbtPlugin("com.dwijnand" % "sbt-compat" % "x.y.z")
+
+The latest release is: [![release-badge][]][release]
 
 ## Usage
 
