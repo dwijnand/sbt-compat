@@ -221,6 +221,11 @@ package librarymanagement {
   }
 
   package ivy {
+    object `package` {
+      type Credentials = sbt.Credentials
+      val Credentials = sbt.Credentials
+    }
+
     object IvyDependencyResolution {
       def apply(configuration: IvyConfiguration): DependencyResolution =
         new DependencyResolution(new IvySbt(configuration))
