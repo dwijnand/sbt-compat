@@ -6,6 +6,12 @@ case "$TRAVIS_SBT_VERSION" in
        *) echo >&2 "Aborting: Unknown TRAVIS_SBT_VERSION: $TRAVIS_SBT_VERSION"; exit 1; ;;
 esac
 
+case "$TRAVIS_SBT_VERSION" in
+  0.13.x) MIMA=""                       ;;
+     1.x) MIMA="mimaReportBinaryIssues" ;;
+       *) echo >&2 "Aborting: Unknown TRAVIS_SBT_VERSION: $TRAVIS_SBT_VERSION"; exit 1; ;;
+esac
+
 [[ "$TRAVIS_PULL_REQUEST" == "false"
 && "$TRAVIS_BRANCH" == "master"
 && "$TRAVIS_SECURE_ENV_VARS" == "true"
@@ -23,4 +29,4 @@ else
   PUBLISH=publishLocal
 fi
 
-sbt "$SWITCH_SBT_VERSION" test mimaReportBinaryIssues "$PUBLISH"
+sbt "$SWITCH_SBT_VERSION" test "$MIMA" "$PUBLISH"
