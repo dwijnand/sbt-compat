@@ -14,7 +14,7 @@ Global / sbtVersion  := "0.13.8" // must be Global, otherwise ^^ won't change an
 
 ThisBuild / scalaVersion := (CrossVersion.partialVersion((pluginCrossBuild / sbtVersion).value) match {
   case Some((0, 13)) => "2.10.7"
-  case Some((1, _))  => "2.12.12"
+  case Some((1, _))  => "2.12.15"
   case _             => sys error s"Unhandled sbt version ${(pluginCrossBuild / sbtVersion).value}"
 })
 
